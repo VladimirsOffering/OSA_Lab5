@@ -1,0 +1,7 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:OSA_Lab5.Styles">
+    <SolidColorBrush x:Key='Succsess' Color='#28a745' />
+    <SolidColorBrush x:Key='Warning' Color='#ffc107' />
+    <SolidColorBrush x:Key='Danger' Color='#dc3545' />
+</ResourceDictionary>
