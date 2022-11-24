@@ -1,12 +1,11 @@
 ﻿using LiveCharts;
 using LiveCharts.Defaults;
-using LiveCharts.Wpf;
+using OSA_Lab5.Models;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
-using OSA_Lab5.Models;
 
 namespace OSA_Lab5
 {
