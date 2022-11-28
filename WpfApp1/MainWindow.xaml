@@ -73,7 +73,7 @@
                     <Border Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" Style="{StaticResource ContentBorder}">
                         <StackPanel Orientation="Vertical">
                             <TextBlock Style="{StaticResource Title}" Text="Поле корреляции"></TextBlock>
-                            <lvc:CartesianChart Foreground="Black" Margin="20" Grid.Row="1" Grid.Column="0" DisableAnimations="True" MinHeight="300" Zoom="X" Background="White">
+                            <lvc:CartesianChart LegendLocation="Right" Foreground="Black" Margin="20" Grid.Row="1" Grid.Column="0" DisableAnimations="True" MinHeight="300" Zoom="X" Background="White">
                                 <lvc:CartesianChart.Series>
                                     <lvc:LineSeries Title="Фактические значения" Values="{Binding ActualValues}" PointGeometrySize="16" Fill="Transparent" PointForeground="{StaticResource Danger}" Foreground="{StaticResource Danger}"></lvc:LineSeries>
                                     <lvc:LineSeries Title="Теоретические значения" Values="{Binding TheoreticalValues}" PointGeometrySize="16" Fill="Transparent" PointForeground="{StaticResource Warning}" Foreground="{StaticResource Warning}"></lvc:LineSeries>
