@@ -11,7 +11,11 @@ namespace OSA_Lab5
 {
     public class MainViewModel : ViewModelBase
     {
-        public ChartValues<ObservablePoint> MainLineSeriesValues { get; set; }
+        public ChartValues<ObservablePoint> PredictedValues { get; set; }
+
+        public ChartValues<ObservablePoint> ActualValues { get; set; }
+
+        public ChartValues<ObservablePoint> TheoreticalValues { get; set; }
 
         public ChartValues<ObservablePoint> AutoCorellationCoefficientsSeries { get; set; }
 
@@ -220,7 +224,7 @@ namespace OSA_Lab5
             ClearAll();
             AverageValue = Rows.Select(x => x.Value).Average();
             SumValue = Rows.Select(x => x.Value).Sum();
-            DrawMainChart();
+            DrawActualValueChart();
             CalculateAutocorrelationCoefficient();
             CalculateMovingAverage();
             CalculateCentredMovingAverage();
@@ -243,6 +247,7 @@ namespace OSA_Lab5
                 default:
                     break;
             }
+            DrawTreoreticalValueChart();
             CalculateE();
             CalculateQuality();
 
@@ -250,7 +255,9 @@ namespace OSA_Lab5
 
         public void ClearAll()
         {
-            MainLineSeriesValues.Clear();
+            ActualValues.Clear();
+            PredictedValues.Clear();
+            TheoreticalValues.Clear();
             AutoCorellationCoefficientsSeries.Clear();
             AnalyticAligmentsRows.Clear();
             PeriodSeasonsRows.Clear();
@@ -270,12 +277,20 @@ namespace OSA_Lab5
         }
 
 
-        public void DrawMainChart()
+        public void DrawActualValueChart()
         {
             foreach (var item in Rows)
             {
-                MainLineSeriesValues.Add(new ObservablePoint(item.X,item.Value));
+                ActualValues.Add(new ObservablePoint(item.X,item.Value));
             }            
+        }
+
+        public void DrawTreoreticalValueChart()
+        {
+            foreach (var item in Rows)
+            {
+                TheoreticalValues.Add(new ObservablePoint(item.X, item.TplusS));
+            }
         }
 
         #region Calculating
@@ -551,12 +566,15 @@ namespace OSA_Lab5
                 default:
                     break;
             }
+            PredictedValues.Add(new ObservablePoint(predictT, PredictValue));
         } 
         public MainViewModel()
         {
+            PredictedValues = new ChartValues<ObservablePoint>();
             Rows = new ObservableCollection<MainRowModel>();
             AutoCorellationCoefficientsSeries = new ChartValues<ObservablePoint>();
-            MainLineSeriesValues = new ChartValues<ObservablePoint>();
+            ActualValues = new ChartValues<ObservablePoint>();
+            TheoreticalValues = new ChartValues<ObservablePoint>();
             AnalyticAligmentsRows = new ObservableCollection<AnalyticAligmentRowModel>();
             PeriodSeasonsRows = new ObservableCollection<PeriodSeasonsRowModel>();
 
